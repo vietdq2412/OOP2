@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .tivi {
+            margin-top: 50px;
+            width: 300px;
+            height: 300px;
+            border: solid 1px red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="remote">
+            <table border="1">
+                <td style="text-align: center;"><button style="background-color: red;" onclick="turnOn_off()">o</button></td>
+                <td colspan="2"></td>
+                <tr>
+                    <td> <button onclick="chooseChanel(this.value)" value='1'>1</button> </td>
+                    <td> <button onclick="chooseChanel(this.value)" value='2'>2</button> </td>
+                    <td> <button onclick="chooseChanel(this.value)" value='3'>3</button> </td>
+                </tr>
+                <tr>
+                    <td> <button onclick="chooseChanel(this.value)" value='4'>4</button> </td>
+                    <td> <button onclick="chooseChanel(this.value)" value='5'>5</button> </td>
+                    <td> <button onclick="chooseChanel(this.value)" value='6'>6</button> </td>
+                </tr>
+                <tr>
+                    <td colspan="3"> <button id="incre" onclick="changeVolum(this.id)">+</button> <button id="decre" style="float: right;" onclick="changeVolum(this.id)">-</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="tivi">
+            <span id="tivi">
+            <p id="status"></p>
+            <p id="chanel"></p>
+            <p id="volum"></p>
+        </span>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function Tivi(chanel, volum) {
+        this.curChanel = chanel;
+        this.curVolum = volum;
+        this.status = false;
+
+        this.changeChanel = function(newChanel) {
+            this.curChanel = newChanel;
+        }
+
+        this.turnOn = function() {
+            this.status = true;
+        }
+        this.turnOff = function() {
+            this.status = false;
+        }
+
+        this.decreVolum = function() {
+            this.curVolum--;
+        }
+        this.increVolum = function() {
+            this.curVolum++;
+        }
+    }
+
+    function Remote(code, tivi) {
+        this.code = code;
+        this.tivi = tivi;
+
+        this.changeChanel = function() {
+            tivi.curChanel = this.code;
+        }
+
+        this.changeVolum = function() {
+
+        }
+
+        this.setCode = function(code) {
+            this.code = code;
+        }
+    }
+
+    let tv = new Tivi(9, 15);
+    let remote = new Remote(1, tv);
+    document.getElementById('tivi').style.display = 'none';
+
+
+    function changeVolum(id) {
+        if (id == 'incre') {
+            tv.increVolum();
+        } else {
+            tv.decreVolum();
+        }
+        document.getElementById('volum').innerHTML = "volum: " + tv.curVolum;
+    }
+
+    function turnOn_off() {
+        if (!tv.status) {
+            tv.status = true;
+            document.getElementById('tivi').style.display = '';
+            document.getElementById('chanel').innerHTML = "chanel: " + tv.curChanel;
+            document.getElementById('volum').innerHTML = "volum: " + tv.curVolum;
+        } else {
+            tv.status = false;
+            document.getElementById('tivi').style.display = 'none';
+        }
+    }
+
+    function chooseChanel(value) {
+        remote.setCode(value);
+        remote.changeChanel();
+
+        document.getElementById('chanel').innerHTML = "chanel: " + tv.curChanel;
+    }
+</script>

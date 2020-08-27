@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+    function Rat(name, weight, speed) {
+        this.name = name;
+        this.weight = weight;
+        this.speed = speed;
+        this.status = true;
+
+        this.speak = function() {
+            return 'chit chit';
+        }
+    }
+
+    function Cat(name, weight, speed) {
+        this.name = name;
+        this.weight = weight;
+        this.speed = speed;
+        this.rat = [];
+
+        this.speak = function() {
+            return 'meo';
+        }
+
+        this.catchRat = function(rat) {
+            if (this.speed > rat.speed) {
+                this.rat.push(rat);
+                document.write(this.name + ' had catched ' + this.rat[this.rat.length - 1].name + '<br>');
+            } else {
+                document.write(this.name + " is too slow <br><br>");
+
+            }
+        }
+
+        this.eatRat = function(rat) {
+            let ratObject = this.rat[this.rat.indexOf(rat)];
+            if (this.rat.indexOf(rat) != -1 && ratObject.status != false) {
+                ratObject.status = false;
+                this.weight += ratObject.weight;
+
+                document.write('<br>after eat ' + ratObject.name + " cat's weight: " + this.weight);
+            } else {
+                document.write('undefined rat!');
+            }
+        }
+    }
+
+    let cat1 = new Cat('cat1', 50, 60);
+
+    let rat1 = new Rat('rat1', 10, 40);
+    let rat2 = new Rat('rat2', 11, 40);
+    let rat3 = new Rat('rat3', 12, 80);
+
+    cat1.catchRat(rat1);
+    cat1.catchRat(rat2);
+    cat1.catchRat(rat3);
+
+    cat1.eatRat(rat1);
+    //cat1.eatRat(rat3);
+</script>

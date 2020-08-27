@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>open console</h1>
+</body>
+
+</html>
+
+<script>
+    function ElectricLamp() {
+        this.status = false;
+
+        this.turnOn = function() {
+            this.status = true;
+        }
+        this.turnOff = function() {
+            this.status = false;
+        }
+    }
+
+    function SwichButton() {
+        this.status = false;
+        this.lamp = lamp;
+
+        this.connnectToLamp = function(lamp) {
+            this.lamp = lamp;
+        }
+
+        this.SwitchOn = function() {
+            this.lamp.turnOn();
+        }
+        this.SwitchOff = function() {
+            this.lamp.turnOff();
+        }
+    }
+
+    let lamp = new ElectricLamp();
+    let switchButton = new SwichButton();
+
+    switchButton.connnectToLamp(lamp);
+
+    console.log('lamp origin status: ' + lamp.status);
+
+    switchButton.SwitchOn();
+    console.log('lamp after switchOn status: ' + lamp.status);
+
+    switchButton.SwitchOff();
+    console.log('lamp after switchOff status: ' + lamp.status);
+    switchButton.SwitchOn();
+    console.log('lamp after switchOn status: ' + lamp.status);
+
+    switchButton.SwitchOff();
+    console.log('lamp after switchOff status: ' + lamp.status);
+    switchButton.SwitchOn();
+    console.log('lamp after switchOn status: ' + lamp.status);
+
+    switchButton.SwitchOff();
+    console.log('lamp after switchOff status: ' + lamp.status);
+    switchButton.SwitchOn();
+    console.log('lamp after switchOn status: ' + lamp.status);
+
+    switchButton.SwitchOff();
+    console.log('lamp after switchOff status: ' + lamp.status);
+    switchButton.SwitchOn();
+    console.log('lamp after switchOn status: ' + lamp.status);
+
+    switchButton.SwitchOff();
+    console.log('lamp after switchOff status: ' + lamp.status);
+    switchButton.SwitchOn();
+    console.log('lamp after switchOn status: ' + lamp.status);
+
+    switchButton.SwitchOff();
+    console.log('lamp after switchOff status: ' + lamp.status);
+    switchButton.SwitchOn();
+    console.log('lamp after switchOn status: ' + lamp.status);
+
+    switchButton.SwitchOff();
+    console.log('lamp after switchOff status: ' + lamp.status);
+    switchButton.SwitchOn();
+    console.log('lamp after switchOn status: ' + lamp.status);
+
+    switchButton.SwitchOff();
+    console.log('lamp after switchOff status: ' + lamp.status);
+    switchButton.SwitchOn();
+    console.log('lamp after switchOn status: ' + lamp.status);
+
+    switchButton.SwitchOff();
+    console.log('lamp after switchOff status: ' + lamp.status);
+
+
+</script>
